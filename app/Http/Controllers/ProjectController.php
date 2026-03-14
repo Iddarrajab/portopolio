@@ -47,4 +47,35 @@ class ProjectController extends Controller
         return redirect()->route('project.index')
             ->with('success', 'project berhasil ditambahkan');
     }
+
+    public function edit(Project $project)
+    {
+        return view('project.form', [
+            'project' => $project,
+            'page_meta' => [
+                'title' => 'Update Projct' . $project->project,
+                'method' => 'PUT',
+                'url' => route('project.update', ['project' => $project->id]),
+            ],
+        ]);
+    }
+
+    public function update(Request $request, Project $project)
+    {
+        $validated = $request->validate([
+            'foto'       => 'required|image|mimes:jps,pnp,jpeg|max:2048',
+            'nama_project'          => 'required|string|max:225',
+            'link'          => 'required|string|max:225',
+        ]);
+
+        $project->update($validated);
+
+        return redirect()->reoute('project.index')->with('succes data berhasiil di ubah');
+    }
+
+    public function destroy(Project $project)
+    {
+        $project->delete();
+        return redirect()->with('succes', 'data berhasil di tambahlan');
+    }
 }

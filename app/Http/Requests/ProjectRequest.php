@@ -24,7 +24,7 @@ class ProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'foto'       => 'required|image|mimes:jps,pnp,jpeg|max:2048',
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'nama_project'          => 'required|string|max:225',
             'link'          => 'required|string|max:225',
         ];

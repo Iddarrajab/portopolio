@@ -106,11 +106,11 @@
 
                 <div class="flex justify-center lg:justify-start gap-4 mt-6">
 
-                    <a class="bg-primary text-white px-6 lg:px-10 py-3 lg:py-4 rounded-full text-sm font-bold shadow-lg">
+                    <a href="#projects" class="bg-primary text-white px-6 lg:px-10 py-3 lg:py-4 rounded-full text-sm font-bold shadow-lg">
                         View Projects
                     </a>
 
-                    <a class="flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-bold px-4">
+                    <a href="#contact" class="flex items-center gap-2 text-slate-400 hover:text-primary text-sm font-bold px-4">
                         Let's Talk
                     </a>
 

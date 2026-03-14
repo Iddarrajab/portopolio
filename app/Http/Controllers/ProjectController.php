@@ -19,12 +19,12 @@ class ProjectController extends Controller
     public function create()
     {
         return view('project.form', [
-            'project' => new project(),
+            'project' => new Project(),
             'page_meta' => [
                 'title'  => 'Tambah project baru',
                 'method' => 'POST',
                 'url'   => route('project.store'),
-                'botton'  => 'Simpan'
+                'button'  => 'Simpan'
             ]
         ]);
     }
@@ -32,7 +32,6 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         $data = $request->validated();
-
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -53,7 +52,7 @@ class ProjectController extends Controller
         return view('project.form', [
             'project' => $project,
             'page_meta' => [
-                'title' => 'Update Projct' . $project->project,
+                'title' => 'Update Project ' . $project->nama_project,
                 'method' => 'PUT',
                 'url' => route('project.update', ['project' => $project->id]),
             ],
@@ -63,19 +62,22 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $validated = $request->validate([
-            'foto'       => 'required|image|mimes:jps,jpg,png,jpeg|max:2048',
-            'nama_project'          => 'required|string|max:225',
-            'link'          => 'required|string|max:225',
+            'foto' => 'required|image|mimes:jpg,jpg,png,jpeg|max:2048',
+            'nama_project' => 'required|string|max:225',
+            'link' => 'required|string|max:225',
         ]);
 
         $project->update($validated);
 
-        return redirect()->reoute('project.index')->with('succes data berhasiil di ubah');
+        return redirect()->route('project.index')
+            ->with('success', 'data berhasil diubah');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->with('succes', 'data berhasil di tambahlan');
+
+        return redirect()->route('project.index')
+            ->with('success', 'data berhasil dihapus');
     }
 }

@@ -41,10 +41,10 @@
                     <x-table.td>{{ $item->nama_project}}</x-table.td>
                     <x-table.td>{{ $item->link}}</x-table.td>
                     <x-table.td class="flex gap-2">
-                        <a href="#" class="text-blue-500 hover:underline">
+                        <a href="{{route ('project.edit', $item)}}" class="text-blue-500 hover:underline">
                             Edit
                         </a>
-                        <form action="#" method="POST"
+                        <form action="{{ route('project.destroy', $item) }}" method="POST"
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus peserta ini?')">
                             @csrf
                             @method('DELETE')

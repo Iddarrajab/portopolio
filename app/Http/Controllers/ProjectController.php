@@ -63,7 +63,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $validated = $request->validate([
-            'foto'       => 'required|image|mimes:jps,pnp,jpeg|max:2048',
+            'foto'       => 'required|image|mimes:jps,jpg,png,jpeg|max:2048',
             'nama_project'          => 'required|string|max:225',
             'link'          => 'required|string|max:225',
         ]);
